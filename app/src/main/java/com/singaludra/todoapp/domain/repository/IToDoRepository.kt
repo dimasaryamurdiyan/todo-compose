@@ -1,12 +1,12 @@
 package com.singaludra.todoapp.domain.repository
 
-import com.singaludra.todoapp.data.source.local.entity.ToDoEntity
+import com.singaludra.todoapp.domain.model.ToDo
 import java.util.Date
 
 interface IToDoRepository {
-    suspend fun getToDoEntries(): List<ToDoEntity>
+    suspend fun getToDoEntries(): List<ToDo>
 
-    suspend fun getToDoEntry(id: Int): ToDoEntity
+    suspend fun getToDoEntry(id: Int): ToDo
 
     suspend fun addToDoEntry(
         title: String,
@@ -14,7 +14,7 @@ interface IToDoRepository {
         date: Date
     )
 
-    suspend fun deleteToDoEntry(toDoEntry: ToDoEntity)
+    suspend fun deleteToDoEntry(toDoEntry: ToDo)
 
-    suspend fun editToDoEntry(toDoEntry: ToDoEntity)
+    suspend fun editToDoEntry(toDoEntry: ToDo)
 }
