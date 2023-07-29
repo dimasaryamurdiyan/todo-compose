@@ -16,7 +16,8 @@ class EditToDoUseCase @Inject constructor(
                 parameters.id,
                 parameters.title,
                 parameters.desc,
-                parameters.date
+                parameters.date,
+                parameters.isDone
             )
         )
     }

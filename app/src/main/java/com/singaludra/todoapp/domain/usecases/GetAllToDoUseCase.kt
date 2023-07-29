@@ -1,6 +1,5 @@
 package com.singaludra.todoapp.domain.usecases
 
-import com.singaludra.todoapp.data.source.local.entity.ToDoEntity
 import com.singaludra.todoapp.domain.base.BaseUseCase
 import com.singaludra.todoapp.domain.exception.IErrorHandler
 import com.singaludra.todoapp.domain.model.ToDo

@@ -12,5 +12,5 @@ data class ToDo(
 )
 
 fun ToDo?.toToDoEntity(): ToDoEntity? = this?.let {
-    ToDoEntity(id, title, desc, date)
+    ToDoEntity(id, title, desc, date, isDone)
 }
