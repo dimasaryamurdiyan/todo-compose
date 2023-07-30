@@ -9,6 +9,7 @@ import com.singaludra.todoapp.data.Resource
 import com.singaludra.todoapp.domain.model.ToDo
 import com.singaludra.todoapp.domain.usecases.AddToDoUseCase
 import com.singaludra.todoapp.domain.usecases.DeleteAllCompletedToDoUseCase
+import com.singaludra.todoapp.domain.usecases.DeleteAllTodoUseCase
 import com.singaludra.todoapp.domain.usecases.DeleteToDoUseCase
 import com.singaludra.todoapp.domain.usecases.EditToDoUseCase
 import com.singaludra.todoapp.domain.usecases.GetAllToDoUseCase
@@ -18,6 +19,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import java.nio.file.Files.delete
 import java.util.Date
 import javax.inject.Inject
 
@@ -27,7 +29,8 @@ class SharedViewModel @Inject constructor(
     private val editToDoUseCase: EditToDoUseCase,
     private val deleteToDoUseCase: DeleteToDoUseCase,
     private val addToDoUseCase: AddToDoUseCase,
-    private val deleteAllCompletedToDoUseCase: DeleteAllCompletedToDoUseCase
+    private val deleteAllCompletedToDoUseCase: DeleteAllCompletedToDoUseCase,
+    private val deleteAllTodoUseCase: DeleteAllTodoUseCase
 ): ViewModel() {
     private val _toDoEntries =
         MutableStateFlow<Resource<List<ToDo>>>(Resource.Loading)
@@ -93,6 +96,14 @@ class SharedViewModel @Inject constructor(
     fun deleteAllCompletedTodo(){
         viewModelScope.launch {
             deleteAllCompletedToDoUseCase(Unit)
+            onMenuCollapsed()
+            getToDoEntries()
+        }
+    }
+
+    fun deleteAllTodo(){
+        viewModelScope.launch {
+            deleteAllTodoUseCase(Unit)
             onMenuCollapsed()
             getToDoEntries()
         }

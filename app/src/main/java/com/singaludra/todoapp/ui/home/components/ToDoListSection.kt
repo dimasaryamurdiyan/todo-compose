@@ -41,7 +41,7 @@ fun ToDoListSection(
         Spacer(modifier = Modifier.height(4.dp))
 
         if (dailyData.isEmpty()) ErrorBox(
-            text = "No Entries Found",
+            text = "You have no tasks!",
             backgroundColor = Color.Transparent,
             textColor = MaterialTheme.colors.primary
         )

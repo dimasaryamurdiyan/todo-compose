@@ -52,7 +52,7 @@ fun HomeScreen(
                 onExpand = viewModel::onMenuExpanded,
                 onDismiss = viewModel::onMenuCollapsed,
                 onDeleteCompletedClick = { viewModel.deleteAllCompletedTodo() },
-                onDeleteAllClick ={}
+                onDeleteAllClick = { viewModel.deleteAllTodo() }
             )
         },
         floatingActionButtonPosition = FabPosition.End,
