@@ -24,5 +24,6 @@ class ToDoRepository @Inject constructor(
 
     override suspend fun editToDoEntry(toDoEntry: ToDo) = localDataSource.editToDoEntry(toDoEntry.toToDoEntity()!!)
     override suspend fun deleteCompletedToDo() = localDataSource.deleteCompletedTodo()
+    override suspend fun deleteAllTodo() = localDataSource.deleteAllTodo()
 
 }

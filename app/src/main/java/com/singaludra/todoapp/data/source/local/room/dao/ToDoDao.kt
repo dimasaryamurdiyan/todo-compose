@@ -26,4 +26,7 @@ interface ToDoDao {
 
     @Query("DELETE FROM todo WHERE isDone = 1")
     suspend fun deleteAllCompletedTodo()
+
+    @Query("DELETE FROM todo")
+    suspend fun deleteAllTodo()
 }

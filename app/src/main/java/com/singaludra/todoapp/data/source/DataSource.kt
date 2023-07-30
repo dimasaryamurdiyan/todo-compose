@@ -22,6 +22,8 @@ interface DataSource {
 
         suspend fun deleteCompletedTodo()
 
+        suspend fun deleteAllTodo()
+
     }
 
 }
