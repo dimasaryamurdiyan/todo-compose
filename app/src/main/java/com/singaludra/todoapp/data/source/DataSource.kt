@@ -20,6 +20,8 @@ interface DataSource {
 
         suspend fun editToDoEntry(toDoEntry: ToDoEntity)
 
+        suspend fun deleteCompletedTodo()
+
     }
 
 }

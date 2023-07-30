@@ -30,4 +30,7 @@ class LocalDataSource @Inject constructor(
     override suspend fun deleteToDoEntry(toDoEntry: ToDoEntity) = toDoDao.delete(toDoEntry)
 
     override suspend fun editToDoEntry(toDoEntry: ToDoEntity) = toDoDao.edit(toDoEntry)
+    override suspend fun deleteCompletedTodo() {
+        return toDoDao.deleteAllCompletedTodo()
+    }
 }

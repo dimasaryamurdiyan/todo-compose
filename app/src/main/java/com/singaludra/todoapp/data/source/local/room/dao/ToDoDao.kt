@@ -23,4 +23,7 @@ interface ToDoDao {
 
     @Delete
     suspend fun delete(toDoEntry: ToDoEntity)
+
+    @Query("DELETE FROM todo WHERE isDone = 1")
+    suspend fun deleteAllCompletedTodo()
 }
