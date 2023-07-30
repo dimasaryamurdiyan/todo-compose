@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">ToDoApp</string>
+    <string name="delete_all_completed">Delete completed tasks</string>
+    <string name="cd_more_vertical">cd more</string>
+    <string name="delete_all_tasks">Delete all tasks</string>
 </resources>

@@ -1,22 +1,17 @@
 package com.singaludra.todoapp.ui.home
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material.FabPosition
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.rounded.DateRange
@@ -30,15 +25,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.singaludra.todoapp.data.Resource
 import com.singaludra.todoapp.navigation.Screen
 import com.singaludra.todoapp.ui.SharedViewModel
-import com.singaludra.todoapp.ui.common.ErrorBox
-import com.singaludra.todoapp.ui.common.Loading
 import com.singaludra.todoapp.ui.home.components.HomeScreenContent
 import com.singaludra.todoapp.ui.home.components.HomeScreenTopBar
 import java.util.Date
@@ -57,7 +47,13 @@ fun HomeScreen(
     Scaffold(
         scaffoldState = scaffoldState,
         topBar = {
-            HomeScreenTopBar()
+            HomeScreenTopBar(
+                expanded = viewModel.menuExpanded,
+                onExpand = viewModel::onMenuExpanded,
+                onDismiss = viewModel::onMenuCollapsed,
+                onDeleteCompletedClick = { viewModel.deleteAllCompletedTodo() },
+                onDeleteAllClick ={}
+            )
         },
         floatingActionButtonPosition = FabPosition.End,
         floatingActionButton = {

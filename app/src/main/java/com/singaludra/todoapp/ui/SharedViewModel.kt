@@ -1,11 +1,14 @@
 package com.singaludra.todoapp.ui
 
-import android.util.Log
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.singaludra.todoapp.data.Resource
 import com.singaludra.todoapp.domain.model.ToDo
 import com.singaludra.todoapp.domain.usecases.AddToDoUseCase
+import com.singaludra.todoapp.domain.usecases.DeleteAllCompletedToDoUseCase
 import com.singaludra.todoapp.domain.usecases.DeleteToDoUseCase
 import com.singaludra.todoapp.domain.usecases.EditToDoUseCase
 import com.singaludra.todoapp.domain.usecases.GetAllToDoUseCase
@@ -23,14 +26,26 @@ class SharedViewModel @Inject constructor(
     private val getAllToDoUseCase: GetAllToDoUseCase,
     private val editToDoUseCase: EditToDoUseCase,
     private val deleteToDoUseCase: DeleteToDoUseCase,
-    private val addToDoUseCase: AddToDoUseCase
+    private val addToDoUseCase: AddToDoUseCase,
+    private val deleteAllCompletedToDoUseCase: DeleteAllCompletedToDoUseCase
 ): ViewModel() {
     private val _toDoEntries =
         MutableStateFlow<Resource<List<ToDo>>>(Resource.Loading)
     val toDoEntries: StateFlow<Resource< List<ToDo>>> get() = _toDoEntries.asStateFlow()
 
+    var menuExpanded: Boolean by mutableStateOf(false)
+        private set
+
     init {
         getToDoEntries()
+    }
+
+    fun onMenuExpanded() {
+        menuExpanded = true
+    }
+
+    fun onMenuCollapsed() {
+        menuExpanded = false
     }
 
     private fun getToDoEntries() {
@@ -71,6 +86,14 @@ class SharedViewModel @Inject constructor(
     fun deleteTodo(todoEntry: ToDo) {
         viewModelScope.launch {
             deleteToDoUseCase(todoEntry)
+            getToDoEntries()
+        }
+    }
+
+    fun deleteAllCompletedTodo(){
+        viewModelScope.launch {
+            deleteAllCompletedToDoUseCase(Unit)
+            onMenuCollapsed()
             getToDoEntries()
         }
     }
