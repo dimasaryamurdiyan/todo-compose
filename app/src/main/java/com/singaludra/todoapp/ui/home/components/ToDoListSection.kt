@@ -35,7 +35,7 @@ fun ToDoListSection(
         Text(
             modifier = Modifier.padding(start = 8.dp),
             text = ("$dateText tasks").uppercase(),
-            color = Color.Gray,
+            color = Color.DarkGray,
             fontSize = 18.sp
         )
         Spacer(modifier = Modifier.height(4.dp))
