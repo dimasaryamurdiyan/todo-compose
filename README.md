@@ -15,7 +15,7 @@ Globally the project has the following top level packages:
 3. **ui**: Basically presenter layer that contains the Compose Components and ViewModel.
 4. **domain**: Basically domain layer that contains all business logic.
 5. **utils**: Contains Utility Class, Extension function, etc.
-6. **navigation**: 
+6. **navigation**: Contains navigation for the app.
 
 ## Features Explanation
 1. Create New Tasks ⇒ you can simply click add button on bottom-end of your screen, then input all the data and save.
