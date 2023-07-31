@@ -1,11 +1,13 @@
 # ToDo App
 
-The app was developed in :
+The app is developed in :
 - Kotlin
+- Jetpack Compose
 - Clean Architecture
 - Hilt
 - Coroutines
 - Room
+- Version Catalogue
 
 
 ## Project Structure
@@ -22,9 +24,9 @@ Globally the project has the following top level packages:
 2. Show All Tasks ⇒ you will see all your tasks that you created at home screen
 3. Mark Tasks Done ⇒ you can mark your task with simply click the circular bar on the item.
 4. Delete Task ⇒ you can delete your task with **drag to the left**.
+5. Filter Task by Date ⇒
+6. Delete completed task ⇒ you can click three dots in the top bar. And choose Delete completed tasks.
 
-## Technical Debts
-- need bump up coverage test for UI test
 
 ## Credits
 - **Dimas Arya Murdiyan** - dimasaryamurdiyan123@gmail.com
